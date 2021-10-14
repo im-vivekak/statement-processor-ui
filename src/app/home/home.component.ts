@@ -9,7 +9,7 @@ import {HomeService} from './home.service';
 export class HomeComponent implements OnInit {
   reports:any[] = [];
   file?: File;
-  displayedColumns: string[] = ['transactionRef', 'description'];
+  displayedColumns: string[] = ['transactionRef', 'description','reason'];
   errorMessage?: String
 
 
