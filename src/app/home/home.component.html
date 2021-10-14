@@ -1,0 +1,33 @@
+<div class="card jh-card">
+  <div class="upload">
+    <span class="label">Upload statement file (csv/xml):</span>
+    <input type="file" (change)="selectFile($event)" />
+    <button
+      class="btn btn-success btn-sm"
+      [disabled]=""
+      (click)="validateFile()"
+    >
+      Validate
+    </button>
+  </div>
+  <div *ngIf="errorMessage" class="error alert alert-secondary" role="alert">
+    <ul>
+      <li>{{ errorMessage }}</li>
+    </ul>
+  </div>
+  <div class="card jh-card" *ngIf="reports.length > 0">
+    <span class="title">Validation Report (Failed records)</span>
+    <table mat-table [dataSource]="reports" class="mat-elevation-z8">
+      <ng-container matColumnDef="transactionRef">
+        <th mat-header-cell *matHeaderCellDef>Transaction reference</th>
+        <td mat-cell *matCellDef="let element">{{ element.transactionRef }}</td>
+      </ng-container>
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef>Descrption</th>
+        <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>
